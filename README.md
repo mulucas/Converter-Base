@@ -12,3 +12,11 @@ Aplicação Desktop para Converter as bases numéricas
 
 [Executavél](https://drive.google.com/open?id=1jnyps8FDpuu7cElEGTQcbWlPhlzNYmBg)
 
+# Calcula Notas
+Aplicação Desktop para calcular as notas e a nota de recuperação que o aluno precisa
+no primeiro semestre do curso de Sistemas de Informação da UFERSA.
+
+## Tela
+
+
+### Download em .jar 
