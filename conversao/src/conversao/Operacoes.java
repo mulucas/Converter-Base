@@ -1,4 +1,4 @@
-package funcoes;
+package conversao;
 
 import java.util.Arrays;
 

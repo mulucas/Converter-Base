@@ -1,4 +1,4 @@
-package gui;
+package conversao;
 
 import java.awt.EventQueue;
 
@@ -6,9 +6,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import funcoes.Operacoes;
-
 import javax.swing.JRadioButton;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
