@@ -1,6 +1,5 @@
 package calcula_notas;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,12 +8,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
 public class Tela extends JFrame {
 
+	private static final long serialVersionUID = 1L;
+	
 	private JPanel contentPane;
 	private JTextField tfAP1;
 	private JTextField tfAP2;
@@ -31,10 +33,21 @@ public class Tela extends JFrame {
 	private JTextField tfEngenharia3;
 	private JTextField tfLogica3;
 	private JTextField tfEngenharia2;
+	private JTextField tfMediaAlgoritmo;
+	private JTextField tfRecupAlgoritmo;
+	private JTextField tfMediaAnalise;
+	private JTextField tfMediaIntroducao;
+	private JTextField tfMediaLogica;
+	private JTextField tfMediaEngenharia;
+	private JTextField tfRecupAnalise;
+	private JTextField tfRecupIntroducao;
+	private JTextField tfRecupLogica;
+	private JTextField tfRecupEngenharia;
+	private JLabel lblNewLabel;
+	private JLabel label;
+	private JLabel label_1;
+	private JLabel label_2;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -48,9 +61,6 @@ public class Tela extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public Tela() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -164,84 +174,227 @@ public class Tela extends JFrame {
 		btnCalcular.setBounds(251, 197, 89, 23);
 		contentPane.add(btnCalcular);
 
+		JLabel lblMedia = new JLabel("MÉDIA");
+		lblMedia.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMedia.setBounds(455, 33, 46, 14);
+		contentPane.add(lblMedia);
+
+		JLabel lblRecuperao = new JLabel("RECUPERAÇÃO");
+		lblRecuperao.setBounds(515, 33, 89, 14);
+		contentPane.add(lblRecuperao);
+
+		tfMediaAlgoritmo = new JTextField();
+		tfMediaAlgoritmo.setEditable(false);
+		tfMediaAlgoritmo.setColumns(10);
+		tfMediaAlgoritmo.setBounds(461, 56, 40, 20);
+		contentPane.add(tfMediaAlgoritmo);
+
+		tfRecupAlgoritmo = new JTextField();
+		tfRecupAlgoritmo.setEditable(false);
+		tfRecupAlgoritmo.setColumns(10);
+		tfRecupAlgoritmo.setBounds(525, 56, 40, 20);
+		contentPane.add(tfRecupAlgoritmo);
+
+		tfMediaAnalise = new JTextField();
+		tfMediaAnalise.setEditable(false);
+		tfMediaAnalise.setColumns(10);
+		tfMediaAnalise.setBounds(461, 81, 40, 20);
+		contentPane.add(tfMediaAnalise);
+
+		tfMediaIntroducao = new JTextField();
+		tfMediaIntroducao.setEditable(false);
+		tfMediaIntroducao.setColumns(10);
+		tfMediaIntroducao.setBounds(461, 106, 40, 20);
+		contentPane.add(tfMediaIntroducao);
+
+		tfMediaLogica = new JTextField();
+		tfMediaLogica.setEditable(false);
+		tfMediaLogica.setColumns(10);
+		tfMediaLogica.setBounds(461, 131, 40, 20);
+		contentPane.add(tfMediaLogica);
+
+		tfMediaEngenharia = new JTextField();
+		tfMediaEngenharia.setEditable(false);
+		tfMediaEngenharia.setColumns(10);
+		tfMediaEngenharia.setBounds(461, 156, 40, 20);
+		contentPane.add(tfMediaEngenharia);
+
+		tfRecupAnalise = new JTextField();
+		tfRecupAnalise.setEditable(false);
+		tfRecupAnalise.setColumns(10);
+		tfRecupAnalise.setBounds(525, 81, 40, 20);
+		contentPane.add(tfRecupAnalise);
+
+		tfRecupIntroducao = new JTextField();
+		tfRecupIntroducao.setEditable(false);
+		tfRecupIntroducao.setColumns(10);
+		tfRecupIntroducao.setBounds(525, 106, 40, 20);
+		contentPane.add(tfRecupIntroducao);
+
+		tfRecupLogica = new JTextField();
+		tfRecupLogica.setEditable(false);
+		tfRecupLogica.setColumns(10);
+		tfRecupLogica.setBounds(525, 131, 40, 20);
+		contentPane.add(tfRecupLogica);
+
+		tfRecupEngenharia = new JTextField();
+		tfRecupEngenharia.setEditable(false);
+		tfRecupEngenharia.setColumns(10);
+		tfRecupEngenharia.setBounds(525, 156, 40, 20);
+		contentPane.add(tfRecupEngenharia);
+
+		lblNewLabel = new JLabel("UNIDADES");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(319, 11, 70, 14);
+		contentPane.add(lblNewLabel);
+
+		label = new JLabel("1ª");
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setBounds(290, 33, 40, 14);
+		contentPane.add(label);
+
+		label_1 = new JLabel("2ª");
+		label_1.setHorizontalAlignment(SwingConstants.CENTER);
+		label_1.setBounds(340, 33, 40, 14);
+		contentPane.add(label_1);
+
+		label_2 = new JLabel("3ª");
+		label_2.setHorizontalAlignment(SwingConstants.CENTER);
+		label_2.setBounds(390, 33, 40, 14);
+		contentPane.add(label_2);
+
 		btnCalcular.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// ---------------------AP1--------------
-				if (tfAP1.getText().equals("") && tfAP2.getText().equals("") && tfAP3.getText().equals("")) {
-					tfAP1.setText("7");
-					tfAP2.setText("7");
-					tfAP3.setText("7");
-				} else if (tfAP2.getText().equals("") && tfAP3.getText().equals("")) {
-					String f = calcula(tfAP1);
-					tfAP2.setText(f);
-					tfAP3.setText(f);
-				} else if (tfAP3.getText().equals("")) {
-					tfAP3.setText(calcula(tfAP1, tfAP2));
-				}
-				// ----------------ANALISE E PRODUCAO TEXTUAL--------------
-				if (tfAET1.getText().equals("") && tfAEP2.getText().equals("") && tfAEP3.getText().equals("")) {
-					tfAET1.setText("7");
-					tfAEP2.setText("7");
-					tfAEP3.setText("7");
-				}else if (tfAEP2.getText().equals("") && tfAEP3.getText().equals("")) {
-					String g = calcula(tfAET1);
-					tfAEP2.setText(g);
-					tfAEP3.setText(g);
-				} else if (tfAEP3.getText().equals("")) {
-					tfAEP3.setText(calcula(tfAET1, tfAEP2));
-				}
-				// ----------------INTRODUCAO A SISTEMAS DE INFORMACAO--------------
-				if (tfIntroducao1.getText().equals("") && tfIntroducao2.getText().equals("") && tfIntroducao3.getText().equals("")) {
-					tfIntroducao1.setText("7");
-					tfIntroducao2.setText("7");
-					tfIntroducao3.setText("7");
-				}else if (tfIntroducao2.getText().equals("") && tfIntroducao3.getText().equals("")) {
-					String m =calcula(tfIntroducao1);
-					tfIntroducao2.setText(m);
-					tfIntroducao3.setText(m);
-				} else if (tfIntroducao3.getText().equals("")) {
-					tfIntroducao3.setText(calcula(tfIntroducao1, tfIntroducao2));
-				}
-				// ----------------LOGICA E MATEMATICA DISCRETA--------------
-				if (tfLogica1.getText().equals("") && tfLogica2.getText().equals("") && tfLogica3.getText().equals("")) {
-					tfLogica1.setText("7");
-					tfLogica2.setText("7");
-					tfLogica3.setText("7");
-				}else if (tfLogica2.getText().equals("") && tfLogica3.getText().equals("")) {
-					String n = calcula(tfLogica1);
-					tfLogica2.setText(n);
-					tfLogica3.setText(n);
-				} else if (tfLogica3.getText().equals("")) {
-					tfLogica3.setText(calcula(tfLogica1, tfLogica2));
-				}
-				// ----------------ENGENHARIA DE SOFTWARE--------------
-				if (tfEngenharia1.getText().equals("") && tfEngenharia2.getText().equals("") && tfEngenharia3.getText().equals("")) {
-					tfEngenharia1.setText("7");
-					tfEngenharia2.setText("7");
-					tfEngenharia3.setText("7");
-				}else if (tfEngenharia2.getText().equals("") && tfEngenharia3.getText().equals("")) {
-					String n = calcula(tfEngenharia1);
-					tfEngenharia2.setText(n);
-					tfEngenharia3.setText(n);
-				} else if (tfEngenharia3.getText().equals("")) {
-					tfEngenharia3.setText(calcula(tfEngenharia1, tfEngenharia2));
+				// --------VERIFICA SE OS CAMPOS DA PRIMEIRA UNIDADE ESTAO TODOS PREENCHIDOS
+				if (tfAET1.getText().equals("") || tfAP1.getText().equals("") || tfEngenharia1.getText().equals("")
+						|| tfIntroducao1.getText().equals("") || tfLogica1.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "Preencha todos os campos da primeira unidade. "
+							+ "Caso ainda nao tenha nota, complete o(s) campo(s) com 0 (Zero)");
+				} else {
+
+					// ---------------------AP1--------------
+					if (tfAP1.getText().equals("") && tfAP2.getText().equals("") && tfAP3.getText().equals("")) {
+						tfAP1.setText("7");
+						tfAP2.setText("7");
+						tfAP3.setText("7");
+					} else if (tfAP2.getText().equals("") && tfAP3.getText().equals("")) {
+						String f = calcula(tfAP1);
+						tfAP2.setText(f);
+						tfAP3.setText(f);
+					} else if (tfAP3.getText().equals("")) {
+						tfAP3.setText(calcula(tfAP1, tfAP2));
+					}
+					// ----------------ANALISE E PRODUCAO TEXTUAL--------------
+					if (tfAET1.getText().equals("") && tfAEP2.getText().equals("") && tfAEP3.getText().equals("")) {
+						tfAET1.setText("7");
+						tfAEP2.setText("7");
+						tfAEP3.setText("7");
+					} else if (tfAEP2.getText().equals("") && tfAEP3.getText().equals("")) {
+						String g = calcula(tfAET1);
+						tfAEP2.setText(g);
+						tfAEP3.setText(g);
+					} else if (tfAEP3.getText().equals("")) {
+						tfAEP3.setText(calcula(tfAET1, tfAEP2));
+					}
+					// ----------------INTRODUCAO A SISTEMAS DE INFORMACAO--------------
+					if (tfIntroducao1.getText().equals("") && tfIntroducao2.getText().equals("")
+							&& tfIntroducao3.getText().equals("")) {
+						tfIntroducao1.setText("7");
+						tfIntroducao2.setText("7");
+						tfIntroducao3.setText("7");
+					} else if (tfIntroducao2.getText().equals("") && tfIntroducao3.getText().equals("")) {
+						String m = calcula(tfIntroducao1);
+						tfIntroducao2.setText(m);
+						tfIntroducao3.setText(m);
+					} else if (tfIntroducao3.getText().equals("")) {
+						tfIntroducao3.setText(calcula(tfIntroducao1, tfIntroducao2));
+					}
+					// ----------------LOGICA E MATEMATICA DISCRETA--------------
+					if (tfLogica1.getText().equals("") && tfLogica2.getText().equals("")
+							&& tfLogica3.getText().equals("")) {
+						tfLogica1.setText("7");
+						tfLogica2.setText("7");
+						tfLogica3.setText("7");
+					} else if (tfLogica2.getText().equals("") && tfLogica3.getText().equals("")) {
+						String n = calcula(tfLogica1);
+						tfLogica2.setText(n);
+						tfLogica3.setText(n);
+					} else if (tfLogica3.getText().equals("")) {
+						tfLogica3.setText(calcula(tfLogica1, tfLogica2));
+					}
+					// ----------------ENGENHARIA DE SOFTWARE--------------
+					if (tfEngenharia1.getText().equals("") && tfEngenharia2.getText().equals("")
+							&& tfEngenharia3.getText().equals("")) {
+						tfEngenharia1.setText("7");
+						tfEngenharia2.setText("7");
+						tfEngenharia3.setText("7");
+					} else if (tfEngenharia2.getText().equals("") && tfEngenharia3.getText().equals("")) {
+						String n = calcula(tfEngenharia1);
+						tfEngenharia2.setText(n);
+						tfEngenharia3.setText(n);
+					} else if (tfEngenharia3.getText().equals("")) {
+						tfEngenharia3.setText(calcula(tfEngenharia1, tfEngenharia2));
+					}
+
+					// ------- calcula a media das materias-------------------
+					tfMediaAlgoritmo.setText(calculaMedia(tfAP1, tfAP2, tfAP3));
+					tfMediaAnalise.setText(calculaMedia(tfAET1, tfAEP2, tfAEP3));
+					tfMediaEngenharia.setText(calculaMedia(tfEngenharia1, tfEngenharia2, tfEngenharia3));
+					tfMediaIntroducao.setText(calculaMedia(tfIntroducao1, tfIntroducao2, tfIntroducao3));
+					tfMediaLogica.setText(calculaMedia(tfLogica1, tfLogica2, tfLogica3));
+
+					// -------VERIFICA SE FICOU EM RECUPERACAO E CALCULA QUANTO
+					// PRECISA-------------------
+					double numero = Double.parseDouble(tfMediaAlgoritmo.getText().replace(',', '.'));
+					if (numero < 7) {
+						tfRecupAlgoritmo.setText(calculaRecuperacao(numero));
+					}
+					numero = Double.parseDouble(tfMediaAnalise.getText().replace(',', '.'));
+					if (numero < 7) {
+						tfRecupAnalise.setText(calculaRecuperacao(numero));
+					}
+					numero = Double.parseDouble(tfMediaEngenharia.getText().replace(',', '.'));
+					if (numero < 7) {
+						tfRecupEngenharia.setText(calculaRecuperacao(numero));
+					}
+					numero = Double.parseDouble(tfMediaIntroducao.getText().replace(',', '.'));
+					if (numero < 7) {
+						tfRecupIntroducao.setText(calculaRecuperacao(numero));
+					}
+					numero = Double.parseDouble(tfMediaLogica.getText().replace(',', '.'));
+					if (numero < 7) {
+						tfRecupLogica.setText(calculaRecuperacao(numero));
+					}
 				}
 			}
 		});
+	}
+
+	private String calculaRecuperacao(double numero) {
+		double rec = (50 - (numero * 6)) / 4;
+		return String.format("%.1f", rec);
+	}
+
+	private String calculaMedia(JTextField n1, JTextField n2, JTextField n3) {
+		double nota1 = Double.parseDouble(n1.getText());
+		double nota2 = Double.parseDouble(n2.getText());
+		double nota3 = Double.parseDouble(n3.getText());
+		String resultado = String.format("%.1f", (nota1 + nota2 + nota3) / 3);
+		return resultado;
 	}
 
 	public String calcula(JTextField nota1, JTextField nota2) {
 		double notaUm = Double.parseDouble(nota1.getText());
 		double notaDois = Double.parseDouble(nota2.getText());
 		double quantoFalta = 21 - (notaUm + notaDois);
-		//tfAP3.setText(quantoFalta+"");
-		return quantoFalta+"";
+		return quantoFalta + "";
 	}
+
 	public String calcula(JTextField nota1) {
 		double notaUm = Double.parseDouble(nota1.getText());
-		double quantoFalta = (21 - notaUm)/2;
-		return quantoFalta+"";
+		double quantoFalta = (21 - notaUm) / 2;
+		return quantoFalta + "";
 	}
 }
