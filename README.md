@@ -18,5 +18,8 @@ no primeiro semestre do curso de Sistemas de Informação da UFERSA.
 
 ## Tela
 
+![CalculadoraUFERSA](https://user-images.githubusercontent.com/35462940/60127176-efab9000-9765-11e9-8a15-8d96261d07db.png)
 
 ### Download em .jar 
+
+[Executavél](https://drive.google.com/open?id=1nPSZsMtDD6gWaLGTIIh9YnaMWWcQc6nA)
